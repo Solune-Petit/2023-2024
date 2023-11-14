@@ -1,6 +1,11 @@
-<?php 
-    require_once "php/fonctions.php";
-    $value = 0;
+<?php
+    $message = "";
+    require_once "functions/functions.php";
+    if (isset($_GET["numberToGuess"]))
+    {
+        $value = $_GET["numberToGuess"];
+        $gagne = DevinerNombre($value, $message);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -15,16 +20,22 @@
         <h1>JOUEZ AVEC NOUS !!!!</h1>
     </header>
     <main>
-        <div>
+        <div class="bigbox">
             <h2>DEVINEZ UN NOMBRE</h2>
-            <form action="guess" method="">
-                <input type="text" id="numberToGuess" name="numberToGuess">
+            <form action="index.php" method="get">
+                <div class="smallbox">
+                    <input type="text" id="numberToGuess" name="numberToGuess">
+                </div>
+                <div class="sendbox">
+                    <input type="submit" id="submit" name="value">
+                </div>
 
             </form>
+            <p><?= $message?></p>
         </div>
     </main>
     <footer>
-
+        <p>premier exercice GET 5TI 2023</p>
     </footer>
 </body>
 </html>
